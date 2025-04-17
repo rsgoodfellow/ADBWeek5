@@ -1,0 +1,26 @@
+CREATE TABLE users (
+	id integer PRIMARY KEY,
+	username varchar(50) UNIQUE,
+	email varchar(50) UNIQUE,
+	password varchar(50) NOT NULL,
+	isadmin Boolean DEFAULT(0),
+	createdat timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO users (id, username, email, password, isadmin) VALUES (1, 'user1', 'user1@email.com', 'Password_D', 1);
+INSERT INTO users (id, username, email, password, isadmin) VALUES (2, 'user2', 'user2@email.com', 'Password_C', 0);
+INSERT INTO users (id, username, email, password, isadmin) VALUES (3, 'user3', 'user3@email.com', 'Password_B', 0);
+INSERT INTO users (id, username, email, password, isadmin) VALUES (4, 'user4', 'user4@email.com', 'Password_A', 0);
+
+UPDATE users
+SET isadmin = 1
+WHERE username = 'user4';
+
+SELECT * FROM users
+WHERE isadmin = 0;
+
+SELECT * FROM users
+WHERE username = 'user3' AND password = 'Password_B';
+
+DELETE FROM users
+WHERE id = 3;
